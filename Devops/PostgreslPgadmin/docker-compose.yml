@@ -1,0 +1,29 @@
+version: "2.3"
+services:
+  demo-container-db:
+    image: postgres:12
+    mem_limit: 1536MB
+    mem_reservation: 1G
+    environment:
+      POSTGRES_USER: TestUser
+      POSTGRES_PASSWORD: TestP@ssword
+    ports:
+    - "5442:5432"
+    networks:
+    - TestNetwork
+    volumes:
+    - db-data:/var/lib/postgresql/data
+  demo-pgadmin4:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: test@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: TestP@ssword
+    ports:
+    - "8889:80"
+    networks:
+    - TestNetwork
+networks:
+  TestNetwork:
+    driver: bridge 
+volumes:
+  db-data:

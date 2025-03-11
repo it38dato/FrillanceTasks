@@ -1,0 +1,6 @@
+clickhouse-client 
+    --host <адрес вашей БД> 
+    --secure 
+    --user user1 
+    --database db1 
+    --port 9440 
